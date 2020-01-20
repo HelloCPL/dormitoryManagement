@@ -1,76 +1,60 @@
 <template>
     <div>
-        <swiper
-            v-if="imgUrls.length > 0"
-            indidator-dots="imgUrls.length > 1"
-        >
-            <block
-                v-for="(item, index) in imgUrls"
-                :key="index"
-            >
-                <swiper-item>
-                    <image
-                        :src="item"
-                        mode="scaleToFill"
-                    ></image>
-                </swiper-item>
-            </block>
-        </swiper>
-
-        <ul class="container log-list">
-            <li
-                v-for="(log, index) in logs"
-                :class="{ red: aa }"
-                :key="index"
-                class="log-item"
-            >
-                <card :text="(index + 1) + ' . ' + log"></card>
-            </li>
-        </ul>
+        <van-button
+            type="primary"
+            @click="test1"
+        >get请求</van-button><br />
+        <!-- <extract-ellipsis id="ds1231">
+            <div class="we-padding-left-10 we-padding-right-10">
+                <div v-html="content"></div>
+            </div>
+        </extract-ellipsis> -->
     </div>
 </template>
 
 <script>
-import { formatTime } from '@/utils/index'
-import card from '@/components/card'
-
+import extractEllipsis from '@com/common/extractEllipsis.vue'
 export default {
     components: {
-        card
+        extractEllipsis,
     },
-
     data() {
         return {
-            logs: [],
-            imgUrls: [
-                'http://mss.sankuai.com/v1/mss_51a7233366a4427fa6132a6ce72dbe54/newsPicture/05558951-de60-49fb-b674-dd906c8897a6',
-                'http://mss.sankuai.com/v1/mss_51a7233366a4427fa6132a6ce72dbe54/coursePicture/0fbcfdf7-0040-4692-8f84-78bb21f3395d',
-                'http://mss.sankuai.com/v1/mss_51a7233366a4427fa6132a6ce72dbe54/management-school-picture/7683b32e-4e44-4b2f-9c03-c21f34320870'
-            ]
+            content: '<p style="color: red">哲学根本问题又称哲学的基本问题、哲学的最高问题，它是指思维和存在、意识和物质的关系问题。恩格斯在1体系、哲学派别以及对它们的客观评价提供了正确的标准。</p><span style="color: gray; font-size: 12px">哲学根本问题又称哲学的基本问题、哲学的最高问题，它是指思维和存在、意识和物质的关系问题。恩格斯在1体系、哲学派别以及对它们的客观评价提供了正确的标准。</span><p style="color: red; font-size: 18px;">哲学根本问题又称哲学的基本问题、哲学的最高问题，它是指思维和存在、意识和物质的关系问题。恩格斯在1体系、哲学派别以及对它们的客观评价提供了正确的标准。</p><p style="color: red">哲学根本问题又称哲学的基本问题、哲学的最高问题，它是指思维和存在、意识和物质的关系问题。恩格斯在1体系、哲学派别以及对它们的客观评价提供了正确的标准。</p><span style="color: gray; font-size: 12px">哲学根本问题又称哲学的基本问题、哲学的最高问题，它是指思维和存在、意识和物质的关系问题。恩格斯在1体系、哲学派别以及对它们的客观评价提供了正确的标准。</span><p style="color: red; font-size: 18px;">哲学根本问题又称哲学的基本问题、哲学的最高问题，它是指思维和存在、意识和物质的关系问题。恩格斯在1体系、哲学派别以及对它们的客观评价提供了正确的标准。</p><p style="color: red">哲学根本问题又称哲学的基本问题、哲学的最高问题，它是指思维和存在、意识和物质的关系问题。恩格斯在1体系、哲学派别以及对它们的客观评价提供了正确的标准。</p><span style="color: gray; font-size: 12px">哲学根本问题又称哲学的基本问题、哲学的最高问题，它是指思维和存在、意识和物质的关系问题。恩格斯在1体系、哲学派别以及对它们的客观评价提供了正确的标准。</span><p style="color: red; font-size: 18px;">哲学根本问题又称哲学的基本问题、哲学的最高问题，它是指思维和存在、意识和物质的关系问题。恩格斯在1体系、哲学派别以及对它们的客观评价提供了正确的标准。</p>',
         }
     },
 
-    created() {
-        let logs
-        if (mpvuePlatform === 'my') {
-            logs = mpvue.getStorageSync({ key: 'logs' }).data || []
-        } else {
-            logs = mpvue.getStorageSync('logs') || []
+    methods: {
+        test1() {
+            this.$http.getExt('https://api.jisuapi.com/area/province', {
+                pageNo: 1,
+                pageSize: 10,
+                appkey: this.userInfoGetter.appKey
+            })
+                .then(res => {
+                    console.log(res)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
         }
-        this.logs = logs.map(log => formatTime(new Date(log)))
-    },
-    
+    }
 }
 </script>
 
-<style>
-.log-list {
-    display: flex;
-    flex-direction: column;
-    padding: 40rpx;
+<style lang="scss" scope>
+.content-wrapper {
+    line-height: 20px;
+    text-indent: 2em;
 }
-
-.log-item {
-    margin: 10rpx;
+.fixed-box {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background: red;
+    position: fixed;
+    left: 0;
+    bottom: 0;
 }
 </style>

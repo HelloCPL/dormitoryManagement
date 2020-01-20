@@ -2,13 +2,17 @@
 
 const state = {
     userInfo: { //用户信息 字段如下
-        appKey: '123abc'
+        appKey: '74f4dc5287428819'
     },
+
+    // 后期对token进行真实请求 ---------------
+    token: 'token123',
 }
 
 const getters = {
     // 导出 用户信息
-    userInfo: state => state.userInfo
+    userInfo: state => state.userInfo,
+    token: state => state.token,
 }
 
 const actions = {

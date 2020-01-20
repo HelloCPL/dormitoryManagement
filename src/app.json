@@ -1,44 +1,52 @@
 {
-  "pages": [
-    "pages/index/main",
-    "pages/logs/main",
-    "pages/storeTest/main"
-  ],
-  "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
-  },
-  "tabBar": {
-    "color": "#999",
-    "backgroundColor": "#fafafa",
-    "selectedColor": "#333",
-    "borderStyle": "white",
-
-    "list": [{
-      "text": "首页",
-      "pagePath": "pages/index/main",
-      "iconPath": "static/tabs/home.png",
-      "selectedIconPath": "static/tabs/home-active.png"
-    }, {
-      "text": "订单",
-      "pagePath": "pages/logs/main",
-      "iconPath": "static/tabs/orders.png",
-      "selectedIconPath": "static/tabs/orders-active.png"
-    }],
-
-    "items": [{
-      "name": "首页",
-      "pagePath": "pages/index/main",
-      "icon": "static/tabs/home.png",
-      "activeIcon": "static/tabs/home-active.png"
-    }, {
-      "name": "订单",
-      "pagePath": "pages/logs/main",
-      "icon": "static/tabs/orders.png",
-      "activeIcon": "static/tabs/orders-active.png"
-    }],
-    "position": "bottom"
-  }
+    "pages": [
+        "pages/logs/main",
+        "pages/index/main",
+        "pages/demo/main",
+        "pages/storeTest/main"
+    ],
+    "usingComponents": {
+        "van-button": "/static/vant/button/index"
+    },
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "WeChat",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "color": "#999",
+        "backgroundColor": "#fafafa",
+        "selectedColor": "#333",
+        "borderStyle": "white",
+        "list": [
+            {
+                "text": "首页",
+                "pagePath": "pages/index/main",
+                "iconPath": "static/tabs/home.png",
+                "selectedIconPath": "static/tabs/home-active.png"
+            },
+            {
+                "text": "订单",
+                "pagePath": "pages/logs/main",
+                "iconPath": "static/tabs/orders.png",
+                "selectedIconPath": "static/tabs/orders-active.png"
+            }
+        ],
+        "items": [
+            {
+                "name": "首页",
+                "pagePath": "pages/index/main",
+                "icon": "static/tabs/home.png",
+                "activeIcon": "static/tabs/home-active.png"
+            },
+            {
+                "name": "订单",
+                "pagePath": "pages/logs/main",
+                "icon": "static/tabs/orders.png",
+                "activeIcon": "static/tabs/orders-active.png"
+            }
+        ],
+        "position": "bottom"
+    }
 }
