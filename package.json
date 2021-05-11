@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "dayjs": "^1.8.19",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "mpvue": "^2.0.0",
     "node-sass": "^4.13.0",
     "sass-loader": "^7.3.1",
